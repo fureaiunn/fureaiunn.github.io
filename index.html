@@ -1,54 +1,83 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Hello Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #f0f8ff;
-        }
-        h1 {
-            color: #333;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            background: #fff;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>申し込みフォーム</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 40px;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #0078D7;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
 </head>
 <body>
-    <h1>メッセージリスト</h1>
-    <ul id="message-list">
-        <li>読み込み中…</li>
-    </ul>
 
-    <script>
-        // 外部JSONファイルをフェッチする例
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const list = document.getElementById('message-list');
-                list.innerHTML = ''; // 読み込み中メッセージを消す
-                data.messages.forEach(msg => {
-                    const li = document.createElement('li');
-                    li.textContent = msg;
-                    list.appendChild(li);
-                });
-            })
-            .catch(error => {
-                document.getElementById('message-list').innerHTML = '<li>データの読み込みに失敗しました</li>';
-                console.error(error);
-            });
-    </script>
+  <h1>申し込みフォーム</h1>
+  <form id="signup-form">
+    <label for="name">お名前</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">メールアドレス</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="course">希望コース</label>
+    <select id="course" name="course" required>
+      <option value="">選択してください</option>
+      <option value="basic">ベーシックコース</option>
+      <option value="advanced">アドバンスコース</option>
+    </select>
+
+    <label for="message">ご質問・メッセージ</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+
+    <button type="submit">送信する</button>
+  </form>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // デフォルト送信を止める
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const course = document.getElementById('course').value;
+      const message = document.getElementById('message').value;
+
+      // 仮の送信処理（ここでサーバーに送信したりできます）
+      alert(`お名前: ${name}\nメール: ${email}\nコース: ${course}\nメッセージ: ${message}`);
+    });
+  </script>
+
 </body>
 </html>
