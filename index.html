@@ -3,19 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Data Page</title>
+    <title>Dynamic Hello Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1 id="greeting">読み込み中…</h1>
+    <h1>メッセージリスト</h1>
+    <ul id="message-list">
+        <li>読み込み中…</li>
+    </ul>
 
     <script>
-        // データとして用意
-        const data = {
-            message: "Hello"
-        };
-
-        // HTMLに表示
-        document.getElementById("greeting").textContent = data.message;
+        // 外部JSONファイルをフェッチする例
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('message-list');
+                list.innerHTML = ''; // 読み込み中メッセージを消す
+                data.messages.forEach(msg => {
+                    const li = document.createElement('li');
+                    li.textContent = msg;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById('message-list').innerHTML = '<li>データの読み込みに失敗しました</li>';
+                console.error(error);
+            });
     </script>
 </body>
 </html>
