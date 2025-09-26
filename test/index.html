@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>申し込みフォーム</title>
+  <!-- ✅ スマホ対応のために必要 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f0f8ff;
-      padding: 40px;
+      padding: 20px;
     }
     .form-wrapper {
       max-width: 400px;
       margin: auto;
-      text-align: center; /* タイトルも中央寄せ */
+      text-align: center;
     }
     form {
       background: #fff;
@@ -20,7 +22,7 @@
       border-radius: 8px;
       margin-top: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: left; /* フォームの中身は左寄せ */
+      text-align: left;
     }
     label {
       display: block;
@@ -29,22 +31,37 @@
     }
     input, select, textarea {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 16px; /* ✅ モバイルでも見やすい大きさ */
     }
     button {
       background-color: #0078D7;
       color: white;
-      padding: 10px;
+      padding: 12px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       width: 100%;
+      font-size: 16px;
     }
     button:hover {
       background-color: #005fa3;
+    }
+
+    /* ✅ スマホ用に調整 */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .form-wrapper {
+        max-width: 100%;
+      }
+      form {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -75,7 +92,7 @@
 
   <script>
     document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // デフォルト送信を止める
+      event.preventDefault();
 
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
