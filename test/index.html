@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>申し込みフォーム</title>
-  <!-- ✅ スマホ対応のために必要 -->
+  <!-- ✅ スマホ対応 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -35,7 +35,8 @@
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 16px; /* ✅ モバイルでも見やすい大きさ */
+      font-size: 16px;
+      box-sizing: border-box; /* ✅ 枠内に収める */
     }
     button {
       background-color: #0078D7;
@@ -44,8 +45,9 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      width: 100%;
+      width: 100%; /* ✅ ボタンも幅を合わせる */
       font-size: 16px;
+      box-sizing: border-box;
     }
     button:hover {
       background-color: #005fa3;
