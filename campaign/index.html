@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>日本農業新聞 無料アプリ購読キャンペーン</title>
+  <style>
+    :root{
+      --ja-green:#2e7d32;
+      --bg:#f7f7f7;
+      --text:#222;
+      --muted:#555;
+      --border:#e6e6e6;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN","Noto Sans JP", Meiryo, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.7;
+    }
+
+    /* ====== page frame ====== */
+    .page{ min-height:100vh; }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* make images responsive by default */
+    img{ max-width:100%; height:auto; display:block; }
+
+    /* ====== top header (white) ====== */
+    .topbar{
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:14px;
+      padding:18px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:inherit;
+      align-items:center;
+    }
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      background:linear-gradient(135deg, #6bcf63, #2e7d32);
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:0.04em;
+      font-size:14px;
+    }
+    .brand-name{
+      font-weight:800;
+      font-size:22px;
+      letter-spacing:0.02em;
+    }
+    .brand-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    /* ====== hero (image with dark overlay) ====== */
+    .hero{
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.35)),
+        url("img/image.png") center/cover no-repeat;
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+      padding: 88px 0 76px;
+      text-align:center;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(46,125,50,0.25), transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08), transparent 50%);
+      transform: rotate(-8deg);
+      pointer-events:none;
+    }
+    .hero-inner{ position:relative; z-index:1; }
+    .hero h1{
+      margin:0 0 22px;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      line-height: 1.22;
+      letter-spacing: 0.06em;
+    }
+    .hero .catch{
+      margin:0 0 18px;
+      font-size: clamp(16px, 1.6vw, 20px);
+      opacity: 0.92;
+    }
+    .hero .lead{
+      margin:0 auto;
+      max-width: 860px;
+      font-size: 16px;
+      opacity: 0.88;
+      line-height: 1.9;
+    }
+    .hero .lead strong{
+      color:#fff;
+      font-weight:800;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+      text-decoration-color: rgba(46,125,50,0.8);
+    }
+
+    /* ====== content sections ====== */
+    main{ padding: 26px 0 56px; }
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      padding: 16px;
+    }
+    .section{ margin-top: 16px; }
+    .section h2{
+      font-size: 22px;
+      margin: 0 0 14px;
+      padding-left: 14px;
+      border-left: 6px solid var(--ja-green);
+      line-height:1.3;
+    }
+    .section h3{ font-size: 18px; margin: 0 0 8px; }
+    p{ margin: 0 0 12px; }
+    ul{ margin: 0; padding-left: 22px; }
+    li{ margin: 0 0 6px; }
+    .highlight{ font-weight: 800; color: var(--ja-green); }
+
+    /* benefit box */
+    .benefit{
+      background: #f1f8f4;
+      border: 1px solid #c8e6c9;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    /* steps */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      align-items: center;
+    }
+    .step{
+      background:#fafafa;
+      border:1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .step .num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      background: var(--ja-green);
+      color:#fff;
+      font-weight:800;
+      margin-right:8px;
+      font-size: 14px;
+      flex: 0 0 auto;
+    }
+    .step h3{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom: 8px;
+    }
+
+    /* center CTA inside steps */
+    .download-cta{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:120px;
+    }
+
+    /* apply button full-width */
+    .apply-cta{ margin-top:14px; }
+
+    /* CTA */
+    .cta{
+      margin-top: 18px;
+      background: var(--ja-green);
+      color:#fff;
+      border-radius: 14px;
+      padding: 16px 14px;
+      text-align:center;
+    }
+    .cta p{
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .cta .sub{
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.95;
+      margin-top: 8px;
+    }
+    .cta .btn{
+      display:inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background:#fff;
+      color: var(--ja-green);
+      font-weight: 800;
+      text-decoration:none;
+      border: 2px solid rgba(255,255,255,0.35);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .cta .btn:active{ transform: translateY(1px); }
+    .cta .btn:focus{ outline:3px solid rgba(46,125,50,0.18); outline-offset:4px; }
+
+    /* footer */
+    footer{
+      margin-top: 22px;
+      background:#fff;
+      border-top:1px solid var(--border);
+      padding: 26px 0;
+    }
+    footer h3{ margin:0 0 10px; font-size: 18px; }
+    /* center footer content */
+    footer .wrap{ text-align:center; }
+    footer ul{ list-style:none; padding:0; margin:10px 0; }
+    footer ul li{ margin:8px 0; }
+    .footer-logo{ display:inline-block; height:auto; max-width:220px; border-radius:8px; }
+    .brand-logo{ height:44px; max-width:160px; }
+    .footer .logo-caption{ margin-top:6px; font-size:13px; color:var(--muted); }
+    .note{ font-size: 13px; color: var(--muted); margin-top: 10px; text-align:center; }
+
+    @media (max-width: 480px){
+      .topbar-inner{ padding: 10px 0; justify-content:center; }
+      .brand-logo{ height:36px; }
+      .wrap{ padding: 0 12px; }
+      .brand-name{ font-size: 18px; }
+      .hero{ padding: 60px 0 48px; }
+      .hero h1{ font-size: 28px; }
+      .hero .catch{ font-size: 15px; }
+      .hero .lead{ font-size: 15px; max-width: 100%; padding: 0 6px; }
+      .card{ padding: 12px; }
+      .cta{ padding: 14px 10px; }
+      .cta .btn{ display:block; width:100%; padding:10px; box-sizing:border-box; }
+      .footer-logo{ max-width:140px; }
+      .note{ font-size:12px; }
+    }
+
+    /* tablet breakpoint */
+    @media (max-width: 768px){
+      .wrap{ max-width:720px; }
+      .hero{ padding: 72px 0 56px; }
+      .hero h1{ font-size: 34px; }
+      .cta .btn{ padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- White header area (like your screenshot) -->
+    <div class="topbar">
+      <div class="wrap">
+        <div class="topbar-inner">
+          <!-- ロゴ画像がある場合は、brand-mark を img に差し替えてOK -->
+          <!-- 例：<img src="ja-shimane-logo.png" alt="JAしまね" style="height:44px;"> -->
+          <a class="brand" href="#" aria-label="JAしまね">
+            <img src="img/logo.png" alt="JAしまね" style="height:44px; display:block; border-radius:8px;">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Black hero area -->
+    <header class="hero">
+      <div class="wrap hero-inner">
+        <h1>日本農業新聞<br>無料アプリ購読キャンペーン</h1>
+        <p class="lead">
+          日本農業新聞アプリの無料版をインストールして、地域情報や話題の記事を手軽にチェックしませんか。<br>
+          今なら、<strong>雲南地区の特産品が当たるチャンス</strong>です！
+        </p>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+      <div class="wrap">
+
+        <div class="card section">
+          <h2>キャンペーン概要</h2>
+          <p><strong>無料ではじめる ご購読キャンペーン</strong></p>
+          <ul>
+            <li><strong>期間</strong>：令和7年12月1日（月）〜 令和8年2月27日（金）</li>
+            <li><strong>対象</strong>：
+              <ul>
+                <li>日本農業新聞アプリを新規インストールし、無料記事を購読された方</li>
+                <li>島根県（雲南市・奥出雲町・飯南町）在住の方</li>
+                <li>※既存の購読者は対象外です</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card section">
+          <h2>キャンペーン特典</h2>
+          <div class="benefit">
+            <h3>抽選で10名様にプレゼント</h3>
+            <p><strong>雲南地区本部の特産品（農産加工品）3,000円分</strong></p>
+            <ul>
+              <li>地域の魅力が詰まった農産加工品</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card section">
+          <h2>応募方法（かんたん2ステップ）</h2>
+          <div class="steps">
+            <div class="step">
+              <h3><span class="num">1</span>STEP 1｜アプリをインストール</h3>
+              <p>App Store または Google Play からアプリをインストールしてください。</p>
+
+                 <div class="cta" aria-label="アプリダウンロード">
+              <!-- ボタンのリンク先は端末判定で切り替え -->
+              <a id="install-btn" class="btn" href="#"
+                 role="button"
+                 data-ios="https://apps.apple.com/jp/app/id6608977069"
+                 data-android="https://play.google.com/store/apps/details?id=jp.co.agrinews.newsapp">
+                インストールする
+              </a>
+            </div>
+
+            </div>
+
+         
+
+            <div class="step">
+              <h3><span class="num">2</span>STEP 2｜キャンペーンに応募</h3>
+              <p>応募フォームから必要事項を入力して送信してください。</p>
+
+                       <div class="cta">
+            <a class="btn" href="https://questant.jp/q/unnan2025" role="button" target="_blank" rel="noopener noreferrer">
+              応募フォームへ進む
+            </a>
+          </div>
+            </div>
+
+       
+
+          </div>
+           
+          </div>
+
+      
+
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <h3>お問い合わせ・お申込み</h3>
+        <ul>
+          <li style="list-style:none; padding: 6px 0;">
+            <img src="img/logo.png" alt="JAしまね" class="footer-logo">
+          </li>
+          <li><strong>JAしまね 雲南地区本部 企画総務部 ふれあい課</strong></li>
+          <li>TEL：0854-42-9053</li>
+        </ul>
+        <p class="note">
+          ※内容は予告なく変更となる場合があります
+        </p>
+      </div>
+    </footer>
+
+  </div>
+  <script>
+    (function(){
+      var btn = document.getElementById('install-btn');
+      if(!btn) return;
+      var ios = btn.dataset.ios;
+      var android = btn.dataset.android;
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var href = btn.getAttribute('href') || '#';
+      if(/android/i.test(ua)){
+        href = android || href;
+      } else if(/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)){
+        href = ios || href;
+      } else {
+        // desktop: send to App Store page as default
+        href = ios || href;
+      }
+      btn.setAttribute('href', href);
+      btn.setAttribute('target', '_blank');
+      btn.setAttribute('rel', 'noopener noreferrer');
+    })();
+  </script>
+</body>
+</html>
