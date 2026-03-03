@@ -6,174 +6,226 @@
 <title>日本農業新聞 無料アプリ購読キャンペーン | JAしまね</title>
 
 <style>
-:root{
-  --primary:#1d1d1f;
-  --secondary:#86868b;
-  --accent:#1f3d2b;
-  --bg:#ffffff;
-  --soft:#f5f5f7;
-  --btn-radius:12px;
+:root {
+  /* Apple風の配色：黒すぎない黒、高品質なグレー */
+  --primary: #1d1d1f;
+  --secondary: #86868b;
+  --accent: #1f3d2b; /* JAらしい深い緑 */
+  --bg: #ffffff;
+  --soft-bg: #f5f5f7;
+  --btn-radius: 22px; /* よりモダンな丸み */
 }
 
-*{
-  box-sizing:border-box;
-  -webkit-font-smoothing:antialiased;
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-  color:var(--primary);
-  background:var(--bg);
-  line-height:1.65;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
 }
 
-.container{
-  max-width:760px;
-  margin:0 auto;
-  padding:0 28px;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-/* Navigation */
-nav{
-  height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter:blur(20px);
-  position:sticky;
-  top:0;
-  z-index:100;
+/* Header */
+nav {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-nav img{
-  height:24px;
+nav img {
+  height: 24px;
 }
 
-/* Hero */
-.hero{
-  padding:140px 0 80px;
-  text-align:center;
+/* Hero Section */
+.hero {
+  padding: 100px 0 60px;
+  text-align: center;
 }
 
-.hero h1{
-  font-size:52px;
-  font-weight:700;
-  letter-spacing:-0.02em;
-  line-height:1.1;
-  margin:0 0 24px;
+.hero .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
 }
 
-.hero .lead{
-  font-size:22px;
-  color:var(--secondary);
-  max-width:620px;
-  margin:0 auto;
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0 0 24px;
 }
 
-.cta-group{
-  margin-top:48px;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 32px;
-  font-size:17px;
-  font-weight:500;
-  text-decoration:none;
-  border-radius:var(--btn-radius);
-  transition:background .25s ease;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
-}
-
-.btn-primary:hover{
-  background:#2a523a;
+.hero .lead {
+  font-size: 21px;
+  color: var(--secondary);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Visual */
-.visual{
-  margin:100px auto 140px;
-  max-width:1200px;
-  padding:0 20px;
+.visual {
+  margin-bottom: 100px;
 }
 
-.visual img{
-  width:100%;
-  height:auto;
+.visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* 少し角を丸めてモダンに */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
 }
 
-/* Sections */
-.section{
-  padding:120px 0;
-  text-align:center;
+/* Content Sections */
+.section {
+  padding: 80px 0;
+  border-bottom: 1px solid #f2f2f2;
 }
 
-.section h2{
-  font-size:36px;
-  font-weight:600;
-  letter-spacing:-0.01em;
-  margin-bottom:48px;
+.section:last-of-type {
+  border-bottom: none;
 }
 
-.section p{
-  font-size:18px;
-  color:var(--secondary);
-  max-width:600px;
-  margin:0 auto 16px;
+.section h2 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  text-align: center;
 }
 
-.clean-list{
-  list-style:none;
-  padding:0;
-  margin:40px auto 0;
-  max-width:520px;
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
 
-.clean-list li{
-  padding:14px 0;
-  font-size:17px;
-  color:var(--primary);
+.feature-item h3 {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-item p {
+  color: var(--secondary);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* List Style */
+.clean-list {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.clean-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 17px;
+}
+
+.clean-list li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--btn-radius);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #2a523a;
+  transform: scale(1.02);
+}
+
+.btn-link {
+  color: #0066cc;
+  font-size: 17px;
+}
+
+.btn-link:after {
+  content: ' >';
+  font-size: 14px;
 }
 
 /* Footer */
-footer{
-  background:var(--soft);
-  padding:100px 0;
-  font-size:13px;
-  color:var(--secondary);
-  text-align:center;
+footer {
+  background: var(--soft-bg);
+  padding: 80px 0;
+  color: var(--secondary);
+  font-size: 12px;
+  line-height: 1.8;
 }
 
-footer .footer-inner{
-  max-width:760px;
-  margin:0 auto;
-  padding:0 28px;
+footer .footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-footer img{
-  height:28px;
-  margin-bottom:24px;
-  opacity:.5;
+.footer-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #d2d2d7;
 }
 
-/* Responsive */
-@media (max-width:734px){
-  .hero{
-    padding:100px 0 60px;
+.footer-logo {
+  filter: grayscale(1);
+  opacity: 0.5;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+/* Tablet / Mobile */
+@media (max-width: 734px) {
+  .hero h1 {
+    font-size: 36px;
   }
-  .hero h1{
-    font-size:36px;
+  .hero .lead {
+    font-size: 19px;
   }
-  .hero .lead{
-    font-size:19px;
-  }
-  .section h2{
-    font-size:28px;
+  .section h2 {
+    font-size: 28px;
   }
 }
 </style>
@@ -187,48 +239,56 @@ footer img{
 
 <header class="hero">
   <div class="container">
-    <h1>日本農業新聞アプリ。</h1>
-    <p class="lead">
-      旬のニュースを、あなたの手の中に。<br>
-      今なら雲南の特産品が当たります。
-    </p>
-
+    <span class="label">期間限定キャンペーン</span>
+    <h1>日本農業新聞<br>無料アプリ購読。</h1>
+    <p class="lead">旬のニュースを、あなたの手の中に。今なら雲南の特産品が当たるチャンス。</p>
+    
     <div class="cta-group">
-      <a id="install-btn" class="btn btn-primary" href="#"
+      <a id="install-btn" class="btn btn-primary" href="#" 
          data-ios="https://apps.apple.com/jp/app/id6608977069"
          data-android="https://play.google.com/store/apps/details?id=jp.co.agrinews.newsapp">
-        ダウンロード
+        アプリをダウンロード
       </a>
     </div>
   </div>
 </header>
 
-<div class="visual">
-  <img src="img/image.png" alt="雲南の田園風景">
+<div class="container visual">
+  <!-- 田園風景のイメージ -->
+  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop" alt="雲南の豊かな風景">
 </div>
 
 <main>
   <div class="container">
-
+    
     <section class="section">
-      <h2>キャンペーンについて</h2>
+      <h2>キャンペーンの詳細</h2>
       <ul class="clean-list">
-        <li>期間：2025年12月1日 — 2026年2月27日</li>
-        <li>対象：アプリを新規インストールされた方</li>
-        <li>地域：雲南市・奥出雲町・飯南町にお住まいの方</li>
-        <li>抽選で10名様に特産品3,000円分を進呈</li>
+        <li><strong>期間：</strong> 2025年12月1日 — 2026年2月27日</li>
+        <li><strong>対象：</strong> アプリを新規インストールされた方</li>
+        <li><strong>地域：</strong> 雲南市・奥出雲町・飯南町にお住まいの方</li>
+        <li><strong>特典：</strong> 抽選で10名様に特産品3,000円分を進呈</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>参加方法</h2>
-      <p>アプリをインストールし、専用フォームから応募してください。</p>
-      <div class="cta-group">
-        <a href="https://questant.jp/q/unnan2025"
-           target="_blank"
-           class="btn btn-primary">
-           応募フォームへ進む
-        </a>
+      <h2>参加は、とても簡単です。</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>1. アプリをインストール</h3>
+          <p>下のボタンから、お使いの端末に合わせてインストールしてください。</p>
+          <div style="margin-top: 20px;">
+            <a href="#" class="btn-link">今すぐダウンロード</a>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <h3>2. フォームから応募</h3>
+          <p>記事を読んだら、専用フォームに必要事項を入力するだけで完了です。</p>
+          <div style="margin-top: 20px;">
+            <a href="https://questant.jp/q/unnan2025" target="_blank" class="btn btn-primary">応募フォームを開く</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -236,16 +296,17 @@ footer img{
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <img src="https://via.placeholder.com/150x50?text=JA+Shimane" alt="JAしまね">
-    <p>
-      JAしまね 雲南地区本部 企画総務部 ふれあい課<br>
-      島根県雲南市木次町里方1088-6<br>
-      電話：0854-42-9053
-    </p>
-    <p style="margin-top:24px;">
-      ※本キャンペーンはJAしまね雲南地区本部が実施するものです。既存購読者は対象外です。
-    </p>
+  <div class="footer-content">
+    <p>※本キャンペーンはJAしまね雲南地区本部が独自に行うものであり、Apple Inc.およびGoogle Inc.とは関係ありません。既存の購読者様は対象外となりますのでご了承ください。</p>
+    
+    <div class="footer-info">
+      <img src="https://via.placeholder.com/150x50?text=JA+Shimane" alt="JAしまね" class="footer-logo">
+      <p>
+        <strong>JAしまね 雲南地区本部 企画総務部 ふれあい課</strong><br>
+        島根県雲南市木次町里方1088-6<br>
+        電話：0854-42-9053
+      </p>
+    </div>
   </div>
 </footer>
 
@@ -253,14 +314,15 @@ footer img{
 (function(){
   const btn = document.getElementById('install-btn');
   if(!btn) return;
-
   const ios = btn.dataset.ios;
   const android = btn.dataset.android;
   const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-  let href = ios;
+  
+  let href = ios; 
   if(/android/i.test(ua)){
     href = android;
+  } else if(/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)){
+    href = ios;
   }
 
   btn.setAttribute('href', href);
