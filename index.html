@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>日本農業新聞 無料アプリ購読キャンペーン</title>
-  <style>
-   :root{
-  --accent:#1f3d2b;     /* 深めの落ち着いた緑 */
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>日本農業新聞 無料アプリ購読キャンペーン</title>
+
+<style>
+:root{
+  --accent:#1f3d2b;
   --text:#111;
   --muted:#666;
   --border:#f0f0f0;
@@ -18,23 +19,24 @@ body{
   margin:0;
   font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN","Noto Sans JP", Meiryo, sans-serif;
   color:var(--text);
-  background:#ffffff;
+  background:#fff;
   line-height:1.9;
 }
 
-/* 共通幅 */
 .wrap{
   max-width:720px;
   margin:0 auto;
   padding:0 24px;
 }
 
-/* 画像 */
-img{ max-width:100%; height:auto; display:block; }
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
 
-/* ヘッダー */
+/* Header */
 .topbar{
-  background:#fff;
   border-bottom:1px solid var(--border);
 }
 
@@ -44,10 +46,9 @@ img{ max-width:100%; height:auto; display:block; }
   justify-content:center;
 }
 
-/* ヒーロー */
+/* Hero */
 .hero{
   padding:140px 0 120px;
-  background:#fff;
   text-align:center;
 }
 
@@ -59,18 +60,17 @@ img{ max-width:100%; height:auto; display:block; }
   line-height:1.4;
 }
 
-.hero .lead{
-  margin:0 auto;
+.hero p{
   font-size:18px;
   color:var(--muted);
+  margin:0;
 }
 
-/* メイン */
+/* Main */
 main{
   padding:120px 0;
 }
 
-/* セクション */
 .section{
   margin:120px 0;
 }
@@ -101,25 +101,10 @@ li{
   margin:0 0 8px;
 }
 
-/* STEP装飾を削る */
-.steps{
-  display:block;
-}
-
-.step{
-  margin-bottom:60px;
-}
-
-.step .num{
-  display:none;
-}
-
 /* CTA */
 .cta{
   margin-top:40px;
   text-align:center;
-  background:none;
-  padding:0;
 }
 
 .btn{
@@ -138,7 +123,7 @@ li{
   opacity:.85;
 }
 
-/* フッター */
+/* Footer */
 footer{
   border-top:1px solid var(--border);
   padding:80px 0;
@@ -156,147 +141,132 @@ footer h3{
   color:var(--muted);
   margin-top:12px;
 }
+
+/* Responsive */
+@media (max-width:768px){
+  .hero{
+    padding:100px 0 80px;
+  }
+  .hero h1{
+    font-size:30px;
+  }
+  main{
+    padding:80px 0;
+  }
+  .section{
+    margin:80px 0;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
 
-    <!-- White header area (like your screenshot) -->
-    <div class="topbar">
-      <div class="wrap">
-        <div class="topbar-inner">
-          <!-- ロゴ画像がある場合は、brand-mark を img に差し替えてOK -->
-          <!-- 例：<img src="ja-shimane-logo.png" alt="JAしまね" style="height:44px;"> -->
-          <a class="brand" href="#" aria-label="JAしまね">
-            <img src="img/logo.png" alt="JAしまね" style="height:44px; display:block; border-radius:8px;">
-          </a>
-        </div>
-      </div>
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <img src="img/logo.png" alt="JAしまね" style="height:44px;">
     </div>
+  </div>
+</div>
 
-    <!-- Black hero area -->
-    <header class="hero">
-      <div class="wrap hero-inner">
-        <h1>日本農業新聞<br>無料アプリ購読キャンペーン</h1>
-        <p class="lead">
-          日本農業新聞アプリの無料版をインストールして、地域情報や話題の記事を手軽にチェックしませんか。<br>
-          今なら、<strong>雲南地区の特産品が当たるチャンス</strong>です！
-        </p>
+<header class="hero">
+  <div class="wrap">
+    <h1>
+      日本農業新聞<br>
+      無料アプリ購読キャンペーン
+    </h1>
+    <p>
+      雲南地区の特産品が当たる抽選企画。
+    </p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="section">
+      <h2>キャンペーン概要</h2>
+      <p>期間：令和7年12月1日（月）〜 令和8年2月27日（金）</p>
+      <p>対象：</p>
+      <ul>
+        <li>日本農業新聞アプリを新規インストールし、無料記事を購読された方</li>
+        <li>島根県（雲南市・奥出雲町・飯南町）在住の方</li>
+        <li>既存の購読者は対象外</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>特典</h2>
+      <p>抽選で10名様に、雲南地区本部の特産品（農産加工品）3,000円分を進呈します。</p>
+    </section>
+
+    <section class="section">
+      <h2>参加方法</h2>
+
+      <h3>アプリをインストール</h3>
+      <p>App Store または Google Play からダウンロードしてください。</p>
+
+      <div class="cta">
+        <a id="install-btn"
+           class="btn"
+           href="#"
+           data-ios="https://apps.apple.com/jp/app/id6608977069"
+           data-android="https://play.google.com/store/apps/details?id=jp.co.agrinews.newsapp">
+          インストールする
+        </a>
       </div>
-    </header>
 
-    <!-- Main content -->
-    <main>
-      <div class="wrap">
+      <h3 style="margin-top:60px;">応募フォームから申し込み</h3>
+      <p>必要事項を入力し送信してください。</p>
 
-        <div class="card section">
-          <h2>キャンペーン概要</h2>
-          <p><strong>無料ではじめる ご購読キャンペーン</strong></p>
-          <ul>
-            <li><strong>期間</strong>：令和7年12月1日（月）〜 令和8年2月27日（金）</li>
-            <li><strong>対象</strong>：
-              <ul>
-                <li>日本農業新聞アプリを新規インストールし、無料記事を購読された方</li>
-                <li>島根県（雲南市・奥出雲町・飯南町）在住の方</li>
-                <li>※既存の購読者は対象外です</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div class="card section">
-          <h2>キャンペーン特典</h2>
-          <div class="benefit">
-            <h3>抽選で10名様にプレゼント</h3>
-            <p><strong>雲南地区本部の特産品（農産加工品）3,000円分</strong></p>
-            <ul>
-              <li>地域の魅力が詰まった農産加工品</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card section">
-          <h2>応募方法（かんたん2ステップ）</h2>
-          <div class="steps">
-            <div class="step">
-              <h3><span class="num">1</span>STEP 1｜アプリをインストール</h3>
-              <p>App Store または Google Play からアプリをインストールしてください。</p>
-
-                 <div class="cta" aria-label="アプリダウンロード">
-              <!-- ボタンのリンク先は端末判定で切り替え -->
-              <a id="install-btn" class="btn" href="#"
-                 role="button"
-                 data-ios="https://apps.apple.com/jp/app/id6608977069"
-                 data-android="https://play.google.com/store/apps/details?id=jp.co.agrinews.newsapp">
-                インストールする
-              </a>
-            </div>
-
-            </div>
-
-         
-
-            <div class="step">
-              <h3><span class="num">2</span>STEP 2｜キャンペーンに応募</h3>
-              <p>応募フォームから必要事項を入力して送信してください。</p>
-
-                       <div class="cta">
-            <a class="btn" href="https://questant.jp/q/unnan2025" role="button" target="_blank" rel="noopener noreferrer">
-              応募フォームへ進む
-            </a>
-          </div>
-            </div>
-
-       
-
-          </div>
-           
-          </div>
-
-      
-
-        </div>
-
+      <div class="cta">
+        <a class="btn"
+           href="https://questant.jp/q/unnan2025"
+           target="_blank"
+           rel="noopener noreferrer">
+          応募フォームへ進む
+        </a>
       </div>
-    </main>
 
-    <footer>
-      <div class="wrap">
-        <h3>お問い合わせ</h3>
-        <ul>
-          <li style="list-style:none; padding: 6px 0;">
-            <img src="img/logo.png" alt="JAしまね" class="footer-logo">
-          </li>
-          <li><strong>JAしまね 雲南地区本部 企画総務部 ふれあい課</strong></li>
-          <li>TEL：0854-42-9053</li>
-        </ul>
-        <p class="note">島根県雲南市木次町里方1088-6</p>
-        <p class="note">
-          ※内容は予告なく変更となる場合があります
-        </p>
-      </div>
-    </footer>
+    </section>
 
   </div>
-  <script>
-    (function(){
-      var btn = document.getElementById('install-btn');
-      if(!btn) return;
-      var ios = btn.dataset.ios;
-      var android = btn.dataset.android;
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var href = btn.getAttribute('href') || '#';
-      if(/android/i.test(ua)){
-        href = android || href;
-      } else if(/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)){
-        href = ios || href;
-      } else {
-        // desktop: send to App Store page as default
-        href = ios || href;
-      }
-      btn.setAttribute('href', href);
-      btn.setAttribute('target', '_blank');
-      btn.setAttribute('rel', 'noopener noreferrer');
-    })();
-  </script>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>お問い合わせ</h3>
+    <img src="img/logo.png" alt="JAしまね" style="height:60px; margin:0 auto 20px;">
+    <p>JAしまね 雲南地区本部 企画総務部 ふれあい課</p>
+    <p>TEL：0854-42-9053</p>
+    <p class="note">島根県雲南市木次町里方1088-6</p>
+    <p class="note">※内容は予告なく変更となる場合があります</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('install-btn');
+  if(!btn) return;
+  var ios = btn.dataset.ios;
+  var android = btn.dataset.android;
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var href = btn.getAttribute('href') || '#';
+
+  if(/android/i.test(ua)){
+    href = android || href;
+  } else if(/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)){
+    href = ios || href;
+  } else {
+    href = ios || href;
+  }
+
+  btn.setAttribute('href', href);
+  btn.setAttribute('target', '_blank');
+  btn.setAttribute('rel', 'noopener noreferrer');
+})();
+</script>
+
 </body>
 </html>
